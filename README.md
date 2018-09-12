@@ -8,6 +8,10 @@ It includes a uniform mesh refinement routine as well as routines for local adap
 
 Functions can be easily adapted to be used in an adaptive Finite Element Code for solving Partial Differential Equations (PDEs).
 
-Run the adaptive demo *lebdemo.m* for a demonstration and check the short documentation *doc.pdf* for information.
+Run the adaptive demo [lebdemo.m](lebdemo.m) for a demonstration of adaptive mesh refinements and please read the short [doc.pdf](documentation) for information.
 
 **Tested with MATLAB 8.4.0.150421 (R2014b)**
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
