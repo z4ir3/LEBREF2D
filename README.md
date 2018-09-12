@@ -12,7 +12,7 @@ Run the adaptive demo [lebdemo.m](lebref2d/lebdemo.m) for a demonstration of ada
 
 ### Compatibility 
 
-**Tested with MATLAB 8.4.0.150421 (R2014b)**
+Tested with **MATLAB 8.4.0.150421 (R2014b)**
 
 ### License
 
