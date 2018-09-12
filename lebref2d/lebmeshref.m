@@ -30,7 +30,7 @@ function [MESHX,MMele] = lebmeshref(MESHX,Mele)
   [MESHY,edgelep] = detailgrid(MESHX);
 
 % Get the overall set of marked elements/edges in order to keep conformity
-  [MMele,MMedge] = getallmarkelem(Mele,MESHY.elem,edgelep);                %(Mele,edgelep,MESHY.elem); 
+  [MMele,MMedge] = getallmarkelem(Mele,MESHY.elem,edgelep); 
 
 % Overall number of edges
   nedg = size(MESHY.coord,1);
