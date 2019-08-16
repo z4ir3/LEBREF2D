@@ -23,7 +23,7 @@ function lebdemo(domain)
   close all;
 
   fprintf('\n++++++++++++++++++++++++++++++++++++++++++++');
-  fprintf('\n++           LEBMESHREF2D DEMO            ++');
+  fprintf('\n++            LEBREF2D DEMO               ++');
   fprintf('\n++++++++++++++++++++++++++++++++++++++++++++');
   
   if domain == 1
