@@ -1,5 +1,5 @@
 function [elem] = point2elem(xp,yp,xy,evt)
-%POINT2ELEM returns the element pf the mesh containing a given input point
+%POINT2ELEM returns the element of the mesh containing a given input point
 %  output 
 % --------
 %  elem  : element of the mesh containg the input point
