@@ -7,8 +7,7 @@ function [MESH] = lshapedomainunstruct
 %
 % See also LSHAPEDOMAIN
 %
-% LEBREF2D function; 12 September 2018
-% Copyright (c) 2018 L. Rocchi
+% LEBREF2D function; Copyright (c) L. Rocchi  
 
 % ------------------------------------------------------------
 % Mesh

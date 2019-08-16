@@ -25,8 +25,7 @@ function plotmeshxandy(MESHX,MESHY,reftype,plotelem,plotvtx)
 %
 % See also PLOTMESH, PLOTMARKEDELEM
 %
-% LEBREF2D function; 12 September 2018
-% Copyright (c) 2018 L. Rocchi
+% LEBREF2D function; Copyright (c) L. Rocchi  
  
   if nargin < 5
       % no vertices' numbers

@@ -24,8 +24,7 @@ function [MESHREF] = unimeshref(MESH,reftype,iplot)
 %  plotmesh(MESHREF,'',1,1);
 % ---------------------------------------------------------
 %
-% LEBREF2D function; 12 September 2018
-% Copyright (c) 2018 L. Rocchi
+% LEBREF2D function; Copyright (c) L. Rocchi  
 
   if nargin < 3
       iplot = 0;

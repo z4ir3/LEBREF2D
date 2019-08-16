@@ -23,8 +23,7 @@ function plotmesh(MESH,titleplot,plotelem,plotvtx)
 %
 % See also PLOTMESHXANDY, PLOTMARKEDELEM
 %
-% LEBREF2D function; 12 September 2018
-% Copyright (c) 2018 L. Rocchi
+% LEBREF2D function; Copyright (c) L. Rocchi  
 
   if nargin < 4
       % no vertices' numbers

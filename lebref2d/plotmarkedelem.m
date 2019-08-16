@@ -21,8 +21,7 @@ function plotmarkedelem(MESH,Mele,plotelem,plotvtx)
 %
 % See also PLOTMESH, PLOTMESHXANDY
 %
-% LEBREF2D function; 12 September 2018
-% Copyright (c) 2018 L. Rocchi
+% LEBREF2D function; Copyright (c) L. Rocchi  
 
   if nargin < 4
       % no vertices's number
