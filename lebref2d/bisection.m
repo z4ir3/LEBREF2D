@@ -12,8 +12,7 @@ function [evt] = bisection(MMele,MMedge,markedge,evt,evtY)
 %  evt      : MESHX.elem (before refinement)
 %  evtY     : MESHY.elem
 %
-% LEBREF2D function; 12 September 2018
-% Copyright (c) 2018 L. Rocchi
+% LEBREF2D function; Copyright (c) L. Rocchi  
 
 % Extract marked elements according to the refinement type 1/2/3
   refxelem = sum( ismember( evtY(MMele,:) , MMedge) , 2);

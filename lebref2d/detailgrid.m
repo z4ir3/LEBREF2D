@@ -17,8 +17,7 @@ function [MESHY,edgelep] = detailgrid(MESHX,ixy)
 % The edgelep matrix contains the elements sharing the 
 % midpoints of the mesh as well as the corresponding edge-position.                   
 %        
-% LEBREF2D function; 12 September 2018
-% Copyright (c) 2018 L. Rocchi
+% LEBREF2D function; Copyright (c) L. Rocchi  
   
   if nargin < 2
       % do not run STEP 4 for xyY coordinates; see below
