@@ -51,7 +51,7 @@ function lebdemo(domain)
   
 % Number of nodes
   nvtx = size(MESHX.coord,1);
-  
+    
 % ----------------------------------------------------------  
 % Detail grid 
 % ----------------------------------------------------------  
@@ -90,7 +90,7 @@ function lebdemo(domain)
   
 % Number of total refinements
   totref = 8;
-
+  
 % ----------------------------------------------------------  
 % Adaptive mesh-refinements
 % ----------------------------------------------------------  
@@ -133,9 +133,7 @@ function lebdemo(domain)
       titlemesh = ['#elements = ',num2str(nel),  ...
                    ', #edges = ',num2str(nedge), ...
                    ', #nodes = ',num2str(nvtx)];
-      plotmesh(MESHX,titlemesh);
-
-           
+      plotmesh(MESHX,titlemesh);          
       pause(1.5);
   end
   fprintf('++++++++++++++++++++++++++++++++++++++++++++\n');
