@@ -1,36 +1,38 @@
-function [MESHX,MMele] = lebmeshref(MESHX,Mele)  
+function [MESHX,MESHY,MMele,MMedge,edgelep] = lebmeshref(MESHX,MESHY,edgelep,Mset,imark)  
 %LEBMESHREF mesh refinement based on longest edge bisection (LEB) algorithm
 %  output 
 % ---------
-%  MESH   : mesh data structure (refined mesh)
-%  MMele  : overall set of marked elements that are refined 
+%  MESHX   : mesh data structure (refined mesh)
+%  MESHY   : mesh data structure for detail grid of the refined mesh
+%  MMele   : set of overall marked elements that are refined
+%  MMedge  : set of overall marked edges that are bisected 
+%  edgelep : midpoint element-position matrix of the refined mesh
 %
 %  input 
 % ---------
-%  MESHX  : mesh data structure (before refinement)
-%  Mele   : set of marked elements
+%  MESHX   : mesh data structure (before refinement)
+%  MESHY   : mesh data structure for detail grid (before refinement)
+%  edgelep : midpoint element-position matrix of the current mesh
+%  Mset    : set of marked elements/edges
+%  imark   : 1 or 2 if Mset is a vector of elements or edges, respectively
 %
 % Mesh refinement based on the longest edge bisection (LEB) as a 
-% particulat case of the newest vertex bisection (NVB) algorithm. 
+% particular case of the newest vertex bisection (NVB) algorithm. 
 % The longest edges of marked elements are marked first (reference edges). 
 %
-% Function(s) called: detailgrid
-%                     getallmarkelem
+% Function(s) called: getallmarkelem
 %                     bisection
+%                     detailgrid
 %                     
-% LEBREF2D function; 12 September 2018
-% Copyright (c) 2018 L. Rocchi  
+% LEBREF2D function; Copyright (c) L. Rocchi  
 
-% Check that Mele is a column vector
-  if size(Mele,2) > size(Mele,1)
-      Mele = Mele';
+% Check that Mset is a column vector
+  if size(Mset,2) > size(Mset,1)
+      Mset = Mset';
   end
 
-% Detail grid associated with the current mesh
-  [MESHY,edgelep] = detailgrid(MESHX);
-
 % Get the overall set of marked elements/edges in order to keep conformity
-  [MMele,MMedge] = getallmarkelem(Mele,MESHY.elem,edgelep); 
+  [MMele,MMedge] = getallmarkelem(Mset,MESHY.elem,edgelep,imark); 
 
 % Overall number of edges
   nedg = size(MESHY.coord,1);
@@ -71,17 +73,14 @@ function [MESHX,MMele] = lebmeshref(MESHX,Mele)
   MESHX.bnd   = refbnd;
   
 % -----------------------------------------------------------------
-% Element boundary mapping matrix for the refined mesh
+% Element boundary mapping matrix and new detail grid
 % -----------------------------------------------------------------
-% This is indeed not needed for the real mesh refinement which is 
-% already finished at this stage; 
-% It is needed if the new element boundary map is required after 
-% mesh refinement.
-% In the latter case, the function DETAILGRID is used although it 
-% does not need to run up to its final STEP 4 (see inside) which recovers 
-% the xyY-coordinates matrix; calling is done with optional input '0';
-  [MESHY,~]     = detailgrid(MESHX,0);
-  [belem,bedge] = find( ismember(MESHY.elem, MESHY.bnd) );
-  MESHX.elbnd   = [belem, bedge];
+% Note that, in principle, the mesh-refinement is already finished 
+% at this point. Here, we compute the new element boundary mapping 
+% matrix and update the detail grid that is used the next iteration
+% of the adaptive loop
+  [MESHY,edgelep] = detailgrid(MESHX);
+  [belem,bedge]   = find( ismember(MESHY.elem, MESHY.bnd) );
+  MESHX.elbnd     = [belem, bedge];
  
 end  % end function
