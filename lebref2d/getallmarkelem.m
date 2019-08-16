@@ -1,21 +1,22 @@
-function [MMele,MMedge] = getallmarkelem(Mele,evtY,edgelep)
+function [MMele,MMedge] = getallmarkelem(Mset,evtY,edgelep,imark)
 %GETALLMARKELEM recovers the overall set of marked elements (and edges) (avoiding hanging nodes)
 %  output 
 % ----------
-%  MMele   : overall set of marked elements that have to be refined
-%  MMedge  : overall set of associated marked edges 
+%  MMele   : set of overall marked elements that have to be refined
+%  MMedge  : set of overall associated marked edges 
 %
 %  input 
 % ----------
-%  Mele    : set of marked elements
+%  Mset    : set of marked elements or edges
 %  evtY    : MESHY.elem
 %  edgelep : midpoint element-position matrix
+%  imark   : 1 or 2 if Mset is a vector of elements or edges, respectively
 %
-% Given in input the set of marked elements, the function returns the *overall* 
-% set of marked elements/edges so that the their bisection does not produce 
-% any hanging node during the mesh refinement 
+% Given in input the set of marked elements, the function returns the set
+% of *overall* marked elements/edges so that the their bisection does not 
+% produce any hanging nodes during the mesh refinement.
 %
-% NOTE that *no mesh* refinement is performed here!
+% NOTE that *no* mesh-refinement is performed here!
 %
 % The function works according to the following procedure:
 %
@@ -34,8 +35,26 @@ function [MMele,MMedge] = getallmarkelem(Mele,evtY,edgelep)
 %
 % The procedure continues until condition 2 is satisfied.
 %
-% LEBREF2D function; 12 September 2018
-% Copyright (c) 2018 L. Rocchi
+% LEBREF2D function; Copyright (c) L. Rocchi  
+
+  if ~ismember(imark,[1,2])
+      error('The fourth argument has to be either equal to 1 or 2!'); 
+  end
+  
+  if imark == 1
+      % The input argument is a set of marked elements:
+      % - assign Mset to Mele;
+      % - set Medge=empty;
+      Mele  = Mset;
+      Medge = [];      
+  else%imark==2
+      % The input argument is a set of marked edges:
+      % - assign Mset to Medge; 
+      % - recover the associated set of "marked elements" which share the marked edges
+      Medge = Mset;
+      Mele  = edgelep(Medge,[1 2]);
+      Mele  = unique( reshape(Mele,2*size(Mele,1),1) );
+  end
 
 % Marked elements are saved in a cell: this improve efficiency when new marked 
 % elements are added during the loop below since the vector is directly replaced 
@@ -69,6 +88,6 @@ function [MMele,MMedge] = getallmarkelem(Mele,evtY,edgelep)
   MMele = MMele{1};
 
 % Overall set of marked edges (avoid repetitions)
-  MMedge = unique( evtY(MMele,2),'stable' );
+  MMedge = unique( [Medge; evtY(MMele,2)], 'stable' );
   
 end % end function
