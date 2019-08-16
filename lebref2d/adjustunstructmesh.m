@@ -15,7 +15,7 @@ function [MESHX] = adjustunstructmesh(MESHX)
 % routine assume that the 2nd edge of a given element is the longest
 % one and this is not guaranteed by the initial unstructured mesh generated.
 %
-% NOTE that both position of nodes and connectivity *do not* change!
+% NOTE that both positions of nodes and connectivity *do not* change!
 %
 % ------------------------------------------------------------------
 % EXAMPLE: run the example and compare the 2nd, 3rd, 4th row of the element
@@ -30,8 +30,7 @@ function [MESHX] = adjustunstructmesh(MESHX)
 %
 % Function(s) called: detailgrid
 %
-% LEBREF2D function; 12 September 2018
-% Copyright (c) 2018 L. Rocchi
+% LEBREF2D function; Copyright (c) L. Rocchi  
  
   xy  = MESHX.coord;   % elements
   evt = MESHX.elem;    % coordinates
