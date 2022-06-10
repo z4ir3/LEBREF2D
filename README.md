@@ -4,6 +4,8 @@
 
 LEBREF2D is a MATLAB package for the mesh refinement of 2D domains based on an efficient usage of MATLAB built-in functions and vectorization. 
 
+<img src="/docs/lebref-pic.png" height="400" width="700">
+
 It includes a uniform mesh refinement routine as well as routines for local adaptive mesh refinements based on the longest edge bisection (LEB) algorithm as particular case of the newest vertex bisection (NVB). 
 
 Functions can be easily adapted to be used in an adaptive Finite Element Code for solving Partial Differential Equations (PDEs) in the setting of the *a posteriori* error estimation. 
