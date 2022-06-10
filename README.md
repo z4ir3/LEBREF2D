@@ -10,7 +10,7 @@ It includes a uniform mesh refinement routine as well as routines for local adap
 
 Functions can be easily adapted to be used in an adaptive Finite Element Code for solving Partial Differential Equations (PDEs) in the setting of the *a posteriori* error estimation. 
 
-Run the adaptive demo [lebdemo.m](lebref2d/lebdemo.m) for a demonstration of adaptive mesh refinements of some built-in domains (square, L-shaped, crack) and please read the short [documentation](doc.pdf) for information.
+Run the adaptive demo [lebdemo.m](src/lebdemo.m) for a demonstration of adaptive mesh refinements of some built-in domains (square, L-shaped, crack) and please read the short [documentation](docs/doc.pdf) for information.
 
 ### Compatibility 
 
